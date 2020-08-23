@@ -4,6 +4,7 @@ import login from '../components/login.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/welcome.vue'
 import Users from '../components/User/User.vue'
+import VipList from '../components/Vip/VipList.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,10 @@ const router = new VueRouter({
         {
           path: '/viewUser.html',
           component: Users
+        },
+        {
+          path: '/VipList',
+          component: VipList
         }
       ]
     }

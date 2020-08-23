@@ -3,9 +3,12 @@ import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
 import './assets/css/global.css'
-import axios from 'axios'
 
+import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import axios from 'axios'
+import qs from 'qs';
+
 
 // axios.defaults.baseURL = ''
 // axios.interceptors.request.use(config => {
@@ -17,6 +20,11 @@ if (process.env.MOCK) {
 }
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
+
+Vue.use(ElementUI)
+Vue.prototype.$axios = axios
+Vue.prototype.qs = qs
+
 
 new Vue({
   router,
