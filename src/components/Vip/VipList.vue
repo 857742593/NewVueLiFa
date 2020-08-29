@@ -13,6 +13,7 @@
           <el-input placeholder="会员卡卡号" v-model="search" clearable></el-input>
         </el-form-item>
         <el-button type="primary" style="width: 100px" @click="getVipById()">查询</el-button>
+        <el-button type="primary" style="width: 100px" @click="getAllList()">显示全部</el-button>
       </el-form>
 
       <el-table
@@ -171,6 +172,7 @@
           consumemoney: null//消费金额
         };
       },
+
       /*
         显示所有会员信息
       */
@@ -181,6 +183,7 @@
         }).then(response => {
           this.tableData = response.data
           this.total = this.tableData.length
+          console.log(response.data)
         }).catch(error => {
           console.log(error);
         })
