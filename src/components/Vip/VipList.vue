@@ -55,6 +55,11 @@
             <span>{{ scope.row.consumemoney }}</span>
           </template>
         </el-table-column>
+        <el-table-column label="开卡时间">
+          <template slot-scope="scope">
+            <span>{{ scope.row.cardtime }}</span>
+          </template>
+        </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button type="primary" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -89,6 +94,9 @@
           <el-form-item label="消费金额">
             <el-input v-model="ruleForm.consumemoney" disabled="disabled"></el-input>
           </el-form-item>
+          <el-form-item label="开卡时间">
+            <el-input v-model="ruleForm.cardtime" disabled="disabled"></el-input>
+          </el-form-item>
           <el-form-item>
             <el-button @click="updateVip()" type="primary" size="medium">确 定</el-button>
             <el-button @click="emptyUserData()" size="medium">取 消</el-button>
@@ -118,7 +126,8 @@
           phone: null,//电话号码
           cardid: null,//卡类型
           cardmoney: null,//卡内余额
-          consumemoney: null//消费金额
+          consumemoney: null,//消费金额
+          cardtime: null
         },
         rules: {},
         tableData: [],
@@ -135,6 +144,13 @@
 
     created() {
       this.getAllList()
+    },
+    formatDate(time){
+      console.log(time)
+      const year = time.getFullYear();
+      const month = (time.getMonth() + 1).toString().padStart(2, 0);
+      const data = time.getDate().toString().padStart(2, 0);
+      return year + '-' + month + '-' + data
     },
 
     methods: {
